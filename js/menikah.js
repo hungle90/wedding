@@ -55,3 +55,23 @@ $(window).load(function() {
   var Body = $("body");
   Body.addClass("preloader-site");
 });
+
+
+function submitGoogleForm() {
+  const form = document.getElementById('congratulation-form');
+  const formData = new FormData(form);
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', 'https://docs.google.com/forms/d/e/1FAIpQLSfzIgfKnXM1qqMFnW3jsBmamm-Kw6CklRBzA3nkvAhMWDboag/formResponse', true);
+  xhr.send(formData);
+  
+  // Handle success or error here
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      // Form submission successful, you can redirect or show a thank you message here
+      alert('Thank you for your message!');
+    } else {
+      // Form submission failed, handle the error
+      alert('An error occurred. Please try again later.');
+    }
+  };
+}
